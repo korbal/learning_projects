@@ -8,7 +8,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <!--small amount of css, does not warrant separate file. initially it hides both the results and the spinning .gif. during calculation these will be revealed.-->
+    <style>
+      #loading, #results{
+        display:none;
+      }
+    </style>
+
+    <title>Loan Calculator</title>
   </head>
   <body class="bg-dark">
     <div class="container">
@@ -37,11 +44,11 @@
               </div>
               <input type="submit" value="Calculate" class="btn btn-dark btn-block">
             </form>
-            <!--Loader here
+            <!--Loader here-->
             <div id="loading">
               <img src="/img/loading.gif" alt="loading">
             </div>
-            -->
+            
             <!--Results-->
             <DIV id="results" class="pt-4">
               <h5>RESULTS</h5>

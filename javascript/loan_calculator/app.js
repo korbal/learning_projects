@@ -1,8 +1,22 @@
 //listen for submit
 
-document.getElementById('loan-form').addEventListener('submit', calculateResults);
+//initially calculateResults was the event handler, but we need to delay it with 3 secs while the .gif is showing. 
+//document.getElementById('loan-form').addEventListener('submit', calculateResults);
 
-function calculateResults(e){
+document.getElementById('loan-form').addEventListener('submit', function(e){
+  //hide results regardless of state, always a good idea
+  document.querySelector('#results').style.display = 'none';
+
+  //show loader
+  document.querySelector('#loading').style.display = 'block';
+
+  setTimeout(calculateResults, 2000);
+  
+
+  e.preventDefault();
+});
+
+function calculateResults(){
   
   //UI variables
   
@@ -27,16 +41,26 @@ function calculateResults(e){
     UImonthlyPayment.value = monthly.toFixed(2);
     UItotalPayment.value = (monthly * calculatedPayments).toFixed(2);
     UItotalInterest.value = ((monthly*calculatedPayments)-principal).toFixed(2);
+    //showing the results, hiding the loading spinner
+    document.querySelector('#results').style.display = 'block';
+    document.querySelector('#loading').style.display = 'none';
     
   } else {
     // we could just unhide a div, but we are doing the whole error from javascript
+    
     showError('Please check your numbers! ');
+    
   }
-  e.preventDefault();
+  //e.preventDefault(); //this is not the event handler in v2, because of setTimeout
 }
 
 //show error
 function showError(message){
+  
+  //hide results and loader .gif
+  document.querySelector('#results').style.display = 'none';
+  document.querySelector('#loading').style.display = 'none';
+
   //create holding div
   const errorDiv = document.createElement('div');
 
@@ -53,8 +77,9 @@ function showError(message){
   //insert error ABOVE heading. grab the parent and pass in the element you want to inject and before WHAT you want to inject.
   card.insertBefore(errorDiv,heading);
 
+
   //clear error after 3 secs
-  setTimeout(clearError, 3000)
+  setTimeout(clearError, 1500)
 
 }
 
