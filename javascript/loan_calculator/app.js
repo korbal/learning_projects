@@ -67,6 +67,8 @@ function showError(message){
   //get elements to insert the message into
   const card = document.querySelector('.card');
   const heading = document.querySelector('.heading')
+  
+
 
   //add class. in bootstrap alert-danger will make it red.
   errorDiv.className = 'alert alert-danger'
@@ -76,8 +78,7 @@ function showError(message){
 
   //insert error ABOVE heading. grab the parent and pass in the element you want to inject and before WHAT you want to inject.
   card.insertBefore(errorDiv,heading);
-
-
+  
   //clear error after 3 secs
   setTimeout(clearError, 1500)
 
