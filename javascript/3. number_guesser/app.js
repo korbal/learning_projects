@@ -31,25 +31,25 @@ guessBtn.addEventListener('click', function(){
   let guess = parseInt(guessInput.value);
 
   if (isNaN(guess) || guess > max || guess < min) {
-    setMessage(`${min} és ${max} között válassz számot!`, 'red');
+    setMessage(`Choose a number between ${min} and ${max}!`, 'red');
   } 
   //check if won
   if (guess === winningNum) {
     guessInput.disabled = true;
-    gameOver(true, `Én is erre a számra gondoltam: ${guess}, kitaláltad, tehát GYŐZTÉL! Most pedig hozz Bálintnak egy sört!`);
+    gameOver(true, `The number was ${guess}, so you got it. You win!`);
 
   } else {
   //guessed wrong number
     guessesLeft -= 1;
     // game over - lost
     if (guessesLeft === 0) {
-      gameOver(false, `Nem sikerült kitalálnod. Én erre gondoltam: ${winningNum}`)
+      gameOver(false, `You couldn't guess the number. It was ${winningNum}.`)
 
     } else {
     guessInput.textContent ='';
     guessInput.focus();
     //wrong answer but game continues
-    setMessage(`Nem erre gondoltam, még ${guessesLeft} lehetőséged van tippelni.`,'red');
+    setMessage(`Not the correct number. You have ${guessesLeft} guess(es).`,'red');
       
     }
 
@@ -73,7 +73,7 @@ function gameOver(won, msg){
   setMessage(msg, color);
 
   //play again? change button text
-  guessBtn.value = 'Újra játszol?'
+  guessBtn.value = 'Play Again'
 
   //add class name, so the even listener will listen for this. because this class was added after the DOM load, we need event delegation to find the class. see event listener
   guessBtn.className += 'play-again';
