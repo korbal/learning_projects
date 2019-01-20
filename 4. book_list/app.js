@@ -25,7 +25,7 @@ UI.prototype.addBookToList = function(book){
   `;
 //apppend the filled out row to the list
 list.appendChild(row);
-ui.showAlert('Book succesfully added!', 'success');
+
 
 }
 
@@ -48,6 +48,14 @@ UI.prototype.showAlert = function(message, className){
   },3000);
 
 }
+
+// Delete book
+UI.prototype.deleteBook = function(target){
+  if(target.className === 'delete'){
+    // DOM traversing back to the tr as we want to delete the whole row. target link parent element is td, its parent is the tr
+    target.parentElement.parentElement.remove();
+  }
+};
 
 //clear input fields
 UI.prototype.clearFields = function(){
@@ -80,7 +88,7 @@ document.querySelector('#book-form').addEventListener('submit', function(e){
   } else {
   //add book to list. addBookToList needs to be added to UI prototype
   ui.addBookToList(book);
-  ////////////////ui.showAlert('Book succesfully added!', 'success');
+  ui.showAlert('Book succesfully added!', 'success');
 
   //clear fields for new input
   ui.clearFields();
@@ -90,3 +98,12 @@ document.querySelector('#book-form').addEventListener('submit', function(e){
 
   e.preventDefault();
 });
+
+// Event listener for delete book. book list is the listener, as books are not there when DOM loads. 
+document.querySelector('#book-list').addEventListener('click', function(e){
+  // Instantiate UI class
+  const ui = new UI();
+  ui.deleteBook(e.target);
+  ui.showAlert('Book removed!', 'success');
+  e.preventDefault();
+})
