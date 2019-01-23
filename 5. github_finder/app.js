@@ -18,15 +18,18 @@ searchUser.addEventListener('keyup', (e) => {
       console.log(data);
       //if userText doesn't exist in Github's profile db, the return has {message: "Not Found", ....}
       if (data.profile.message === 'Not Found') {
-        // Show alert that user doesn't exist. ui.js will handle this. 
+        // Show alert that user doesn't exist. ui.js will handle this. #p1=msg, #p2=classes
+        ui.showAlert('User not found', 'alert alert-danger');
         
       } else {
         // Show profile on the page. needs a user. #p1 = user
         ui.showProfile(data.profile);
+        ui.showRepos(data.repos)
       }
     })
   } else {
     // Clear profile. ui.js will handle it. 
+    ui.clearProfile();
   }
 
 });
