@@ -1,5 +1,6 @@
-// Init weather object
+// Init weather object and UI object
 const weather = new Weather('budapest', 'hu');
+const ui = new UI();
 
 // Get weather on DOM load
 document.addEventListener('DOMContentLoaded', getWeather);
@@ -11,6 +12,7 @@ function getWeather(){
   weather.getWeather()
   .then(results => {
     console.log(results)
+    ui.paint(results);
   })
   .catch(err => console.log(err));
 }
