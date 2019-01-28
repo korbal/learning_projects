@@ -24,7 +24,7 @@ const ItemCtrl = (function(){
       {id: 0, name: 'Steak Dinner', calories: 1200},
       {id: 1, name: 'Cookie', calories: 400},
       {id: 2, name: 'Eggs', calories: 300}
-    ],
+    ],  
     //when we edit, the item is put at the top in the box. this is the currentItem
     currentItem: null,
     totalCalories: 0
@@ -34,6 +34,27 @@ const ItemCtrl = (function(){
   return {
     getItems: function(){
       return data.items;
+    },
+    addItem: function(name, calories){
+      let ID;
+      // Create ID for item
+      if(data.items.length > 0){
+        // Auto increment IDs
+        ID = data.items[data.items.length-1].id + 1;
+      } else {
+        ID = 0;
+      }
+
+      // Calories to number from string 
+      calories = parseInt(calories);
+
+      // Create new item
+      newItem = new Item(ID, name, calories);
+      
+      // Push newly created item into the data structure (list on UI currently)
+      data.items.push(newItem);
+
+      return newItem;
     },
     logData: function(){
       return data;
@@ -49,7 +70,10 @@ const ItemCtrl = (function(){
 const UICtrl = (function(){
 
   const UISelectors = {
-    itemList: '#item-list'
+    itemList: '#item-list',
+    addBtn: '.add-btn',
+    itemNameInput: '#item-name',
+    itemCaloriesInput: '#item-calories'
   }
 
   // PUBLIC METHODS (ACCESSIBLE FROM OUTSIDE)
@@ -68,7 +92,21 @@ const UICtrl = (function(){
       //document.querySelector('#item-list').innerHTML = html;
       document.querySelector(UISelectors.itemList).innerHTML = html;
     },
+  
+  // For the main even listener loader, so we can use UISelectors
+  getSelectors: function(){
+    return UISelectors;
+  },
+
+  // Grab data within the Meal and Calories field on the UI. #item-name and #item-calories. need to add them to UISelectors in order to access them.
+  getItemInput: function(){
+    return {
+      name: document.querySelector(UISelectors.itemNameInput).value,
+      calories: document.querySelector(UISelectors.itemCaloriesInput).value
+    }
   }
+
+}
 
   
 })();
@@ -80,6 +118,32 @@ const UICtrl = (function(){
 const App = (function(ItemCtrl, UICtrl){
   //console.log(ItemCtrl.logData());
 
+  // Load all event listeners. this is called in init()
+  const loadEventListeners = function(){
+    // getSelector is a public function, this is the way it can be reached
+    const UISelectors = UICtrl.getSelectors();
+
+    // Add item event
+    // Instead of using this, we'll do that
+    // document.querySelector('#add-btn');
+    document.querySelector(UISelectors.addBtn).addEventListener('click', itemAddSubmit);
+
+  }
+
+  // Add item submit
+  const itemAddSubmit = function(e){
+    // Get form input from UI controller
+    const input = UICtrl.getItemInput();
+    
+    // Check for name and calorie input. If neither is empty, add item 
+    if(input.name !== '' && input.calories !== ''){ 
+      // Add item to itemlist 
+      const newItem = ItemCtrl.addItem(input.name, input.calories);
+    }
+
+    e.preventDefault();
+  }
+
   // PUBLIC METHODS (ACCESSIBLE FROM OUTSIDE)
   return {
     init: function(){
@@ -88,6 +152,9 @@ const App = (function(ItemCtrl, UICtrl){
 
       // Populate list with items
       UICtrl.populateItemList(items);
+
+      // Load all event listeners
+      loadEventListeners();
       
     }
   }
