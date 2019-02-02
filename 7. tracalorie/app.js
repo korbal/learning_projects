@@ -21,9 +21,9 @@ const ItemCtrl = (function(){
   // Hardcoded data to start off with the UI. These are not readable from chrome as they are private. What we RETURN (with logData) is accessible publicly. is called in the main App during development. 
   const data = {
     items: [
-      {id: 0, name: 'Steak Dinner', calories: 1200},
-      {id: 1, name: 'Cookie', calories: 400},
-      {id: 2, name: 'Eggs', calories: 300}
+      // {id: 0, name: 'Steak Dinner', calories: 1200},
+      // {id: 1, name: 'Cookie', calories: 400},
+      // {id: 2, name: 'Eggs', calories: 300}
     ],  
     //when we edit, the item is put at the top in the box. this is the currentItem
     currentItem: null,
@@ -56,6 +56,20 @@ const ItemCtrl = (function(){
 
       return newItem;
     },
+
+    // Loop through items and add total cals
+    getTotalCalories: function(){
+      // Let, because it will change
+      let total = 0;
+
+      data.items.forEach(function(item){
+        total += item.calories;
+      });
+      data.totalCalories = total;
+
+      return data.totalCalories;
+    },
+
     logData: function(){
       return data;
     }
@@ -73,7 +87,8 @@ const UICtrl = (function(){
     itemList: '#item-list',
     addBtn: '.add-btn',
     itemNameInput: '#item-name',
-    itemCaloriesInput: '#item-calories'
+    itemCaloriesInput: '#item-calories',
+    totalCalories: '.total-calories'
   }
 
   // PUBLIC METHODS (ACCESSIBLE FROM OUTSIDE)
@@ -96,6 +111,40 @@ const UICtrl = (function(){
   // For the main even listener loader, so we can use UISelectors
   getSelectors: function(){
     return UISelectors;
+  },
+
+  // this is on the UI
+  addListItem: function(item){
+    // Show the list
+    document.querySelector(UISelectors.itemList).style.display = 'block';
+    // Create li element
+    const li = document.createElement('li');
+    // Add class
+    li.className = 'collection-item';
+    // Add ID, this is dynamic
+    li.id = `item-${item.id}`;
+
+    // Add html
+    li.innerHTML = `<strong>${item.name}: </strong><em>${item.calories} Calories</em><a href="" class="secondary-content"> <i class=" edit-item fa fa-pencil"></i></a>`;
+    // Insert item into UI
+    document.querySelector(UISelectors.itemList).insertAdjacentElement('beforeend', li);
+    // After this, remove text from fields on ui. that is in the App
+  },
+
+  clearInput: function(){
+    document.querySelector(UISelectors.itemNameInput).value = '';
+    document.querySelector(UISelectors.itemCaloriesInput).value = '';
+    // Bring back focus to item name
+    document.querySelector(UISelectors.itemNameInput).focus();
+  },
+
+  hideList: function(){
+    document.querySelector(UISelectors.itemList).style.display ='none';
+    // used in init
+  },
+
+  showTotalCalories: function(totalCalories){
+    document.querySelector(UISelectors.totalCalories).textContent = totalCalories;
   },
 
   // Grab data within the Meal and Calories field on the UI. #item-name and #item-calories. need to add them to UISelectors in order to access them.
@@ -130,7 +179,7 @@ const App = (function(ItemCtrl, UICtrl){
 
   }
 
-  // Add item submit
+  // Add item submit. when you click on Add meal button
   const itemAddSubmit = function(e){
     // Get form input from UI controller
     const input = UICtrl.getItemInput();
@@ -139,6 +188,19 @@ const App = (function(ItemCtrl, UICtrl){
     if(input.name !== '' && input.calories !== ''){ 
       // Add item to itemlist 
       const newItem = ItemCtrl.addItem(input.name, input.calories);
+      // Add item to UI list
+      UICtrl.addListItem(newItem);
+
+      // Get total calories
+      const totalCalories = ItemCtrl.getTotalCalories();
+
+      // Show total cals in UI
+      UICtrl.showTotalCalories(totalCalories);
+
+      // Clear fileds after item is added
+      UICtrl.clearInput();
+
+
     }
 
     e.preventDefault();
@@ -150,8 +212,17 @@ const App = (function(ItemCtrl, UICtrl){
       // Fetch Items from data structure.
       const items = ItemCtrl.getItems();
 
+      // Check if any items
+      if (items.length === 0) {
+        UICtrl.hideList();
+      } else {
       // Populate list with items
       UICtrl.populateItemList(items);
+      }
+
+      // Get total calories. this is copy pasted. 
+      const totalCalories = ItemCtrl.getTotalCalories();
+      UICtrl.showTotalCalories(totalCalories);
 
       // Load all event listeners
       loadEventListeners();
