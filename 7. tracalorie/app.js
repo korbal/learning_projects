@@ -70,6 +70,27 @@ const ItemCtrl = (function(){
       return data.totalCalories;
     },
 
+    getItemById: function(id){
+      // loop through items and match the id
+      let found = null;
+
+      data.items.forEach(function(item){
+        if(item.id === id){
+          found = item;
+        }
+      });
+      return found;
+    },
+
+    // when clicked the edit button in the list, this make it the current object in the datastructure. this is fetched then by the UI controller to display in the upper window. 
+    setCurrentItem: function(item){
+      data.currentItem = item;
+    },
+
+    getCurrentItem: function(){
+      return data.currentItem;
+    },
+
     logData: function(){
       return data;
     }
@@ -86,6 +107,9 @@ const UICtrl = (function(){
   const UISelectors = {
     itemList: '#item-list',
     addBtn: '.add-btn',
+    updateBtn: '.update-btn',
+    deleteBtn: '.delete-btn',
+    backBtn: '.back-btn',
     itemNameInput: '#item-name',
     itemCaloriesInput: '#item-calories',
     totalCalories: '.total-calories'
@@ -138,6 +162,14 @@ const UICtrl = (function(){
     document.querySelector(UISelectors.itemNameInput).focus();
   },
 
+  // add current item to upper form to edit. 
+  addItemToForm: function(){
+    document.querySelector(UISelectors.itemNameInput).value = ItemCtrl.getCurrentItem().name;
+    document.querySelector(UISelectors.itemCaloriesInput).value = ItemCtrl.getCurrentItem().calories;
+    // shows buttons
+    UICtrl.showEditState();
+  },
+
   hideList: function(){
     document.querySelector(UISelectors.itemList).style.display ='none';
     // used in init
@@ -145,6 +177,24 @@ const UICtrl = (function(){
 
   showTotalCalories: function(totalCalories){
     document.querySelector(UISelectors.totalCalories).textContent = totalCalories;
+  },
+
+  showEditState: function(){
+    
+    document.querySelector(UISelectors.updateBtn).style.display ='inline';
+    document.querySelector(UISelectors.deleteBtn).style.display ='inline';
+    document.querySelector(UISelectors.backBtn).style.display ='inline';
+    document.querySelector(UISelectors.addBtn).style.display ='none';
+
+  },
+
+  clearEditState: function(){
+    UICtrl.clearInput();
+    document.querySelector(UISelectors.updateBtn).style.display ='none';
+    document.querySelector(UISelectors.deleteBtn).style.display ='none';
+    document.querySelector(UISelectors.backBtn).style.display ='none';
+    document.querySelector(UISelectors.addBtn).style.display ='inline';
+
   },
 
   // Grab data within the Meal and Calories field on the UI. #item-name and #item-calories. need to add them to UISelectors in order to access them.
@@ -177,6 +227,9 @@ const App = (function(ItemCtrl, UICtrl){
     // document.querySelector('#add-btn');
     document.querySelector(UISelectors.addBtn).addEventListener('click', itemAddSubmit);
 
+    // Edit item click event
+    document.querySelector(UISelectors.itemList).addEventListener('click', itemEditClick);
+
   }
 
   // Add item submit. when you click on Add meal button
@@ -206,9 +259,43 @@ const App = (function(ItemCtrl, UICtrl){
     e.preventDefault();
   }
 
+  // Update item submit
+  const itemEditClick = function(e){
+    // event listener targets item list (delegation), we need to narrow it down to the item edit button icon
+
+    if(e.target.classList.contains('edit-item')){
+      //get list item id (item-0, item-1) to know which item to put in the upper window to edit
+      // <li class="collection-item" id="item-0"><strong>Cookie: </strong><em>400 Calories</em><a href="" class="secondary-content"> 
+      //<i class="edit-item fa fa-pencil"></i></a>
+      // </li>
+      const listId = e.target.parentNode.parentNode.id; // this is the li. id = "item-x"
+      // we need the x (the actual number) from the item-x
+      const listIdArr = listId.split('-');
+      //console.log(listIdArr);
+
+      // Get the actual ID (just the number)
+      const id = parseInt(listIdArr[1]);
+
+      // Now we have the id, let's get the whole object. 
+      const itemToEdit = ItemCtrl.getItemById(id);
+
+      // Set current item
+      ItemCtrl.setCurrentItem(itemToEdit);
+
+      // Add item to upper window form to edit
+      UICtrl.addItemToForm(); //don't have to pass the item, because setCurrentItem made it the current item and we can access that from anywhere. 
+    }
+
+    // I forgot to include this and caused trouble. event listener = preventdefault!!!!!!!!!!!!!
+    e.preventDefault();
+  }
+
   // PUBLIC METHODS (ACCESSIBLE FROM OUTSIDE)
   return {
     init: function(){
+      // Clear edit state / set initial state
+      UICtrl.clearEditState();
+
       // Fetch Items from data structure.
       const items = ItemCtrl.getItems();
 
