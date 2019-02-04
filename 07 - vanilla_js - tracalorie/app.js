@@ -82,6 +82,23 @@ const ItemCtrl = (function(){
       return found;
     },
 
+    // updates item in the datastructure
+    updateItem: function(name, calories){
+      // Calories to number 
+      calories = parseInt(calories);
+
+      let found = null;
+
+      data.items.forEach(function(item){
+        if(item.id === data.currentItem.id){
+          item.name = name;
+          item.calories = calories;
+          found = item;
+        }
+      })
+      return found;
+    },
+
     // when clicked the edit button in the list, this make it the current object in the datastructure. this is fetched then by the UI controller to display in the upper window. 
     setCurrentItem: function(item){
       data.currentItem = item;
@@ -106,6 +123,8 @@ const UICtrl = (function(){
 
   const UISelectors = {
     itemList: '#item-list',
+    // just the items in the list
+    listItems: '#item-list li',
     addBtn: '.add-btn',
     updateBtn: '.update-btn',
     deleteBtn: '.delete-btn',
@@ -155,6 +174,24 @@ const UICtrl = (function(){
     // After this, remove text from fields on ui. that is in the App
   },
 
+  updateListItem: function(item){
+    //get li-s from UI. this is a nodelist
+    let listItems = document.querySelectorAll(UISelectors.listItems);
+
+    // node list can't be forEach-ed, need to convert into an array
+    listItems = Array.from(listItems);
+
+    listItems.forEach(function(listItem){
+      const itemID = listItem.getAttribute('id');
+
+      // if true, this is the item we want to update in the ui
+      if(itemID === `item-${item.id}`){
+        document.querySelector(`#${itemID}`).innerHTML = `<strong>${item.name}: </strong><em>${item.calories} Calories</em><a href="" class="secondary-content"> <i class=" edit-item fa fa-pencil"></i></a>`;
+      }
+    });
+
+  },
+
   clearInput: function(){
     document.querySelector(UISelectors.itemNameInput).value = '';
     document.querySelector(UISelectors.itemCaloriesInput).value = '';
@@ -197,6 +234,7 @@ const UICtrl = (function(){
 
   },
 
+
   // Grab data within the Meal and Calories field on the UI. #item-name and #item-calories. need to add them to UISelectors in order to access them.
   getItemInput: function(){
     return {
@@ -227,8 +265,20 @@ const App = (function(ItemCtrl, UICtrl){
     // document.querySelector('#add-btn');
     document.querySelector(UISelectors.addBtn).addEventListener('click', itemAddSubmit);
 
+    // Disable submit on enter (so we can't add new item with enter during editing)
+    document.addEventListener('keypress', function(e){
+      if(e.keyCode === 13 || e.which === 13){
+        e.preventDefault();
+        return false;
+      }
+    })
+
     // Edit item click event
     document.querySelector(UISelectors.itemList).addEventListener('click', itemEditClick);
+
+    // Update item event
+    document.querySelector(UISelectors.updateBtn).addEventListener('click', itemUpdateSubmit);
+
 
   }
 
@@ -287,6 +337,28 @@ const App = (function(ItemCtrl, UICtrl){
     }
 
     // I forgot to include this and caused trouble. event listener = preventdefault!!!!!!!!!!!!!
+    e.preventDefault();
+  }
+
+  const itemUpdateSubmit = function(e){
+    // Get item input
+    const input = UICtrl.getItemInput();
+
+    // Update item in db
+    const updatedItem = ItemCtrl.updateItem(input.name, input.calories);
+
+    //updateItem() returns the item, we need to update with that the UI
+    UICtrl.updateListItem(updatedItem);
+
+    // copy paste from itemAddSubmit()
+    // Get total calories
+    const totalCalories = ItemCtrl.getTotalCalories();
+
+    // Show total cals in UI
+    UICtrl.showTotalCalories(totalCalories);
+
+    UICtrl.clearEditState();
+
     e.preventDefault();
   }
 
