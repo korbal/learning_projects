@@ -1,6 +1,75 @@
 // STORAGE CONTROLLER //
 // ------------------------------------------------------------
+const StorageCtrl = (function(){
+  
+  // PUBLIC METHODS
+  return {
+    storeItem: function(item){
+      let items;
 
+      // Check if anything is in LS already
+      
+      if (localStorage.getItem('items') === null) {
+        items = [];
+        items.push(item);
+
+        // Set LS
+        localStorage.setItem('items', JSON.stringify(items));
+      } else {
+        // If there are already items in ls, get them first
+        items = JSON.parse(localStorage.getItem('items'));
+
+        // Push new item
+        items.push(item);
+
+        // Re-set local storage with new item
+        localStorage.setItem('items', JSON.stringify(items));
+        
+      }
+    },
+    getItemsFromStorage: function(){
+      let items;
+      if(localStorage.getItem('items') === null){
+        items = [];
+      } else {
+        items = JSON.parse(localStorage.getItem('items'));
+      }
+      return items;
+    }, 
+
+    updateItemStorage: function(updatedItem){
+      let items = JSON.parse(localStorage.getItem('items'));
+
+      // Find the item that we want to update
+      items.forEach(function(item, index){
+        if(updatedItem.id === item.id){
+          // Cut it out and insert the updated item
+          items.splice(index, 1, updatedItem);
+        }
+
+      });
+      localStorage.setItem('items', JSON.stringify(items));
+    },
+    deleteItemFromStorage: function(id){
+      let items = JSON.parse(localStorage.getItem('items'));
+
+      // Find the item that we want to update
+      items.forEach(function(item, index){
+        if(id === item.id){
+          // Cut it out and insert the updated item
+          items.splice(index, 1);
+        }
+
+      });
+      localStorage.setItem('items', JSON.stringify(items));
+
+    },
+    clearItemsFromStorage: function(){
+      localStorage.removeItem('items');
+    }
+
+  }
+})();
 
 // ------------------------------------------------------------
 
@@ -20,11 +89,13 @@ const ItemCtrl = (function(){
   // Data structure / State
   // Hardcoded data to start off with the UI. These are not readable from chrome as they are private. What we RETURN (with logData) is accessible publicly. is called in the main App during development. 
   const data = {
-    items: [
+    // hard coded data at the beginning. later fetched from local storage
+    //items: [
       // {id: 0, name: 'Steak Dinner', calories: 1200},
       // {id: 1, name: 'Cookie', calories: 400},
       // {id: 2, name: 'Eggs', calories: 300}
-    ],  
+    //],  
+    items: StorageCtrl.getItemsFromStorage(),
     //when we edit, the item is put at the top in the box. this is the currentItem
     currentItem: null,
     totalCalories: 0
@@ -298,7 +369,7 @@ const UICtrl = (function(){
 // APP CONTROLLER
 // ------------------------------------------------------------
 // Main app controller. runs immediately, other controllers are passed in
-const App = (function(ItemCtrl, UICtrl){
+const App = (function(ItemCtrl, StorageCtrl, UICtrl){
   //console.log(ItemCtrl.logData());
 
   // Load all event listeners. this is called in init()
@@ -355,6 +426,9 @@ const App = (function(ItemCtrl, UICtrl){
       // Show total cals in UI
       UICtrl.showTotalCalories(totalCalories);
 
+      // Store in local storage
+      StorageCtrl.storeItem(newItem);
+
       // Clear fileds after item is added
       UICtrl.clearInput();
 
@@ -405,12 +479,17 @@ const App = (function(ItemCtrl, UICtrl){
     //updateItem() returns the item, we need to update with that the UI
     UICtrl.updateListItem(updatedItem);
 
+    // Update local storage
+    StorageCtrl.updateItemStorage(updatedItem);
+
     // copy paste from itemAddSubmit()
     // Get total calories
     const totalCalories = ItemCtrl.getTotalCalories();
 
     // Show total cals in UI
     UICtrl.showTotalCalories(totalCalories);
+
+    
 
     UICtrl.clearEditState();
 
@@ -426,6 +505,9 @@ const App = (function(ItemCtrl, UICtrl){
 
     // Delete from UI
     UICtrl.deleteListItem(currentItem.id);
+
+    // Delete from LS
+    StorageCtrl.deleteItemFromStorage(currentItem.id);
 
     //updating total calories in UI. copy paste.
      // Get total calories
@@ -446,6 +528,9 @@ const App = (function(ItemCtrl, UICtrl){
 
     // Remove from UI
     UICtrl.removeItems();
+
+    // Delete from local storage
+    StorageCtrl.clearItemsFromStorage();
 
     //updating total calories in UI. copy paste.
      // Get total calories
@@ -486,7 +571,7 @@ const App = (function(ItemCtrl, UICtrl){
     }
   }
   
-})(ItemCtrl, UICtrl);
+})(ItemCtrl, StorageCtrl, UICtrl);
 // ------------------------------------------------------------
 
 // INITIALIZE APP
