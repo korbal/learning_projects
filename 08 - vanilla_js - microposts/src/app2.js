@@ -19,6 +19,8 @@
 // console.log(sayHello());
 
 // we can import everything at once
-import * as mod from "./mymodule2";
-console.log(mod.person.name);
-console.log(mod.sayHello());
+// import * as mod from "./mymodule2";
+// console.log(mod.person.name);
+// console.log(mod.sayHello());
+
+// https://www.udemy.com/modern-javascript-from-the-beginning/learn/v4/t/lecture/8762574?start=0
