@@ -14,6 +14,16 @@
       "id": 3,
       "title": "post 3 title",
       "body": "post 3 body"
+    },
+    {
+      "title": "post 4",
+      "body": "this is teh body of post 4",
+      "id": 4
+    },
+    {
+      "title": "post pina",
+      "body": "pina body",
+      "id": 5
     }
   ]
 }
