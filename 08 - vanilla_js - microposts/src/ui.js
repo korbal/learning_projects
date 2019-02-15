@@ -68,6 +68,54 @@ class UI {
     this.titleInput.value = "";
     this.bodyInput.value = "";
   }
+  // Fill form to edit
+  fillForm(data) {
+    this.titleInput.value = data.title;
+    this.bodyInput.value = data.body;
+    // id is hidden but it's there
+    this.idInput.value = data.id;
+
+    this.changeFormState("edit");
+  }
+
+  // Clear ID hidden value
+  clearIdInput() {
+    this.idInput.value = "";
+  }
+
+  changeFormState(type) {
+    if (type === "edit") {
+      // Change button text from add post
+      this.postSubmit.textContent = "Update Post";
+
+      // Change button color. need to include ALL the classes that it has had.
+      this.postSubmit.className = "post-submit btn btn-warning btn-block";
+
+      // Create cancel button
+      const button = document.createElement("button");
+      button.className = "post-cancel btn btn-light btn-block";
+      button.appendChild(document.createTextNode("Cancel Edit"));
+
+      // Get parent so we can insert the button
+      const cardForm = document.querySelector(".card-form");
+      // Get element to insert before
+      const formEnd = document.querySelector(".form-end");
+      // Insert button
+      cardForm.insertBefore(button, formEnd);
+    } else {
+      this.postSubmit.textContent = "Post It";
+      this.postSubmit.className = "post-submit btn btn-primary btn-block";
+
+      // Remove cancel button if it's there
+      if (document.querySelector(".post-cancel")) {
+        document.querySelector(".post-cancel").remove();
+      }
+      // Clear ID from hidden field
+      this.clearIdInput();
+      // Clear fields
+      this.clearFields();
+    }
+  }
 }
 
 export const ui = new UI();
