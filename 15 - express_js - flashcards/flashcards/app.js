@@ -11,6 +11,19 @@ app.use(cookieParser());
 // app.set defines settings for express
 app.set("view engine", "pug");
 
+// Middleware. runs every time a request comes in
+app.use((req, res, next) => {
+  console.log("hello");
+  const err = new Error("fuck error");
+  err.status = 500;
+  next(err);
+});
+
+app.use((req, res, next) => {
+  console.log("world");
+  next();
+});
+
 app.get("/", (req, res) => {
   // send just renders a string on the page, we'd use res.render to render a pug view file
   //res.send("pina");
@@ -54,6 +67,18 @@ app.post("/hello", (req, res) => {
 app.post("/goodbye", (req, res) => {
   res.clearCookie("username");
   res.redirect("/hello");
+});
+
+app.use((req, res, next) => {
+  const err = new Error("Not found");
+  err.status = 404;
+  next(err);
+});
+
+app.get((err, req, res, next) => {
+  res.locals.error = err;
+  res.status(err.status);
+  res.render("error");
 });
 
 // port number
