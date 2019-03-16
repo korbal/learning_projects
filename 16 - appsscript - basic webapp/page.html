@@ -12,6 +12,8 @@
   <body>
   <!--Container Start-->
   <div class="container">
+  
+  <h1><?= title ?></h1>
        <div class="row">
         <div class="input-field col s6">
           <input id="fn" type="text" class="validate">
@@ -26,10 +28,13 @@
          <div class="input-field col s6">
          <select id="app">
             <option disabled selected>Choose your app</option>
-            <option>Google Sheets</option>
-            <option>Excel</option>
-            <option>Numbers</option>
-            <option>Other</option>
+            
+            <!--rendering stuff from backend. a ?= emeli át a változót a backednből. 
+             a sima ? ? csak futtatja a jst közötte itt a list változót emeli át backendből
+             REFACTORED need to use ?! to render stuff as html 
+            -->
+           <?!= list;  ?>
+           
          </select>
          <label>Application</label>
          </div>
