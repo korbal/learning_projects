@@ -2,28 +2,34 @@
 <html>
   <head>
     <base target="_top">
+    <?!= include('16 - appsscript - basic webapp/page-css'); ?>
+    
   </head>
   <body>
     <h1>Hello</h1>
+    <div class = "form-row">
+        <label>First Name: </label><input type="text" id="fn">
+    </div>
     
-    <label>Name: </label><input type="text" id="username">
+    <div class = "form-row">
+         <label>Last Name: </label><input type="text" id="ln">
+    </div>
     
-    <button id="btn">Run</button>
+    <div class = "form-row">
+         <label>Application: </label>
+         <select id="app">
+             <option>Google Sheets</option>
+             <option>Excel</option>
+             <option>Numbers</option>
+         </select>
+    </div>
     
-    <script>
-        
-        document.getElementById('btn').addEventListener('click', doStuff);
-        
-        // this will run stuff in the backend
-        function doStuff(){
-        
-            var uname = document.getElementById('username').value;
-            google.script.run.userClicked(uname);
-            var uname = document.getElementById('username').value = "";
-        }
-    
-    </script>
+    <div class = "form-row">
+        <button id="btn">Run</button>
+    </div>
+
   
+  <?!= include('16 - appsscript - basic webapp/page-js'); ?>
   </body>
 </html>
 
