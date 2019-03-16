@@ -1,5 +1,12 @@
     <script>
+        // materialize initializer for dropdown
+        document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+        });
         
+        
+        // sending stuff with run button
         document.getElementById('btn').addEventListener('click', doStuff);
         
         // this will run stuff in the backend
@@ -14,7 +21,11 @@
             // clear input
             document.getElementById('fn').value = "";
             document.getElementById('ln').value = "";
-            document.getElementById('app').reset();
+            
+            var myApp = document.getElementById("app");
+            // Setting back the dropdown to original title after running form M. is for materialize
+            myApp.selectedIndex = 0;
+            M.FormSelect.init(myApp);
             
         }
     
