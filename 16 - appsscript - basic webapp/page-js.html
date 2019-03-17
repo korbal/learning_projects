@@ -9,6 +9,10 @@
         // sending stuff with run button
         document.getElementById('btn').addEventListener('click', doStuff);
         
+        // adding zip and getting estimate automatically without clickin'
+        document.getElementById('zip').addEventListener('input', getEstimate);
+        
+        
         // this will run stuff in the backend
         function doStuff(){
             var userInfo = {};
@@ -16,6 +20,9 @@
             userInfo.firstName = document.getElementById('fn').value;
             userInfo.lastName = document.getElementById('ln').value;
             userInfo.app = document.getElementById('app').value;
+            userInfo.zip = document.getElementById('zip').value;
+            userInfo.est = document.getElementById('est').value;
+            
             google.script.run.userClicked(userInfo);
             
             // clear input
@@ -27,6 +34,31 @@
             myApp.selectedIndex = 0;
             M.FormSelect.init(myApp);
             
+            document.getElementById('zip').value = "";
+            document.getElementById('est').value = "";
+            M.updateTextFields();
+            
+        }
+        
+        function getEstimate(){
+         
+          var zipCode = document.getElementById('zip').value;
+          
+          // Running only when I typed 5 chars already
+          if(zipCode.length === 5){
+                    
+             // passing to backend to pull up estimate from gsheet. withsuccesshandler
+             // runs updatesitmate IF getcost returns something
+             google.script.run.withSuccessHandler(updateEstimate).getCost(zipCode);
+          }
+          
+        }
+        
+        // cost is coming from .getCost's return in the successhandler
+        function updateEstimate(cost){
+           document.getElementById('est').value = cost;
+           // Removes "Estimate" from the input box, not typed over
+           M.updateTextFields();
         }
     
     </script>

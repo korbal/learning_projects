@@ -41,10 +41,48 @@ function userClicked(userInfo){
   var ss = SpreadsheetApp.openByUrl(url);
   var ws = ss.getSheetByName("Data");
   
-  ws.appendRow([userInfo.firstName, userInfo.lastName, userInfo.app, new Date()]);
+  ws.appendRow([userInfo.firstName, userInfo.lastName, userInfo.app, userInfo.zip, userInfo.est, new Date()]);
   
 }
 
 function include(fileName){
   return HtmlService.createHtmlOutputFromFile(fileName).getContent();
 }
+
+function getCost(zipCode){
+  var ss = SpreadsheetApp.openByUrl(url);
+  var ws = ss.getSheetByName("Estimate");
+  var data = ws.getRange(1, 1, ws.getLastRow(),2).getValues();
+  
+  var zipCodesList = data.map(function(row){
+    return row[0];
+  });
+  
+  var costList = data.map(function(row){
+    return row[1];
+  });
+  
+  var position = zipCodesList.indexOf(zipCode)
+  
+  if(position > -1){
+    // toFixed adds 2 decimals. need to format this as this is not returned as currency
+    return '$' + costList[position].toFixed(2);
+  } else {
+    return 'Unavailable';
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
