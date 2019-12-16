@@ -1,3 +1,10 @@
+/*  {
+  events: ["bread", "pudding", "brushed teeth", "weekend", "touched tree"],
+  squirrel: false
+},
+*/
+
+// original journal
 var JOURNAL = [
   { events: ["carrot", "exercise", "weekend"], squirrel: false },
   {
@@ -244,6 +251,1594 @@ var JOURNAL = [
   }
 ];
 
+// this is for success for DURATION
+/*
+sleep_deprived: 0.2136233148205519
+app.js:836 lucid: 0.22908106449636376
+app.js:836 normaflor: 0.23241742005034205
+app.js:836 drunk: -0.22144409528221717
+app.js:836 other: -0.35229742431261823
+app.js:836 extracoffee: -0.3947040205951424
+app.js:836 cheatday: -0.2672612419124244
+
+*/
+JOURNAL = [
+  { events: ["morning_gorgo"], squirrel: false },
+  {
+    events: [
+      "morning_gorgo",
+      "kegel",
+      "evening_protein",
+      "evening_no_drink",
+      "evening_magnesium",
+      "sleep_socks",
+      "evening_prog_relax",
+      "perinatus",
+      "sleep_was_cold",
+      "sleep_downstairs"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "kegel",
+      "perinatus",
+      "evening_protein",
+      "evening_magnesium",
+      "evening_prog_relax",
+      "sleep_socks",
+      "sleep_downstairs",
+      "sleep_pijama"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "kegel",
+      "evening_magnesium",
+      "evening_prog_relax",
+      "evening_booze",
+      "sleep_socks",
+      "sleep_downstairs",
+      "sleep_pijama"
+    ],
+    squirrel: true
+  },
+  { events: ["no_sport", "evening_booze", "travel"], squirrel: false },
+  { events: ["no_sport", "evening_booze", "travel"], squirrel: true },
+  {
+    events: [
+      "no_sport",
+      "evening_booze",
+      "travel",
+      "sleep_deprived",
+      "allergy_season"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "travel",
+      "sleep_sleepmaster",
+      "sleep_deprived",
+      "allergy_season"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_no_drink",
+      "evening_magnesium",
+      "evening_prog_relax",
+      "sleep_sleepmaster",
+      "happy"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "kegel",
+      "evening_magnesium",
+      "evening_prog_relax",
+      "evening_booze",
+      "sleep_sleepmaster",
+      "lucid",
+      "normaflor",
+      "grind"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "long_walk",
+      "evening_magnesium",
+      "sleep_sleepmaster",
+      "normaflor",
+      "grind",
+      "masszázs"
+    ],
+    squirrel: false
+  },
+  { events: ["no_sport", "travel", "drunk"], squirrel: false },
+  {
+    events: ["no_sport", "drunk", "travel", "sleep_sleepmaster"],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_deprived",
+      "normaflor",
+      "grind",
+      "sleep_sleepmaster"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "kegel",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_sleepmaster",
+      "normaflor",
+      "lucid",
+      "sex"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_no_drink",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_sleepmaster",
+      "normaflor",
+      "grind"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "perinatus",
+      "evening_magnesium",
+      "evening_booze",
+      "sleep_sleepmaster",
+      "normaflor",
+      "long_walk"
+    ],
+    squirrel: true
+  },
+  { events: [""], squirrel: true },
+  {
+    events: ["morning_gorgo", "kegel", "normaflor", "grind", "drunk"],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "sleep_sleepmaster",
+      "sleep_deprived",
+      "normaflor",
+      "sex"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "sleep_sleepmaster",
+      "normaflor",
+      "kegel"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "grind",
+      "kegel",
+      "evening_magnesium",
+      "evening_booze",
+      "sleep_sleepmaster",
+      "normaflor"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "perinatus",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_sleepmaster",
+      "normaflor",
+      "grind",
+      "other",
+      "extracoffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "kegel",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "normaflor",
+      "levendulatea",
+      "other",
+      "extracoffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_sleepmaster",
+      "other",
+      "extracoffee",
+      "sex"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_sleepmaster",
+      "other",
+      "extracoffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_booze",
+      "travel",
+      "grind",
+      "other",
+      "extracoffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_booze",
+      "lucid",
+      "extracoffee",
+      "travel",
+      "extracoffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: ["no_sport", "evening_magnesium", "extracoffee"],
+    squirrel: false
+  },
+  {
+    events: [
+      "afternoon_gorgo",
+      "evening_protein",
+      "evening_magnesium",
+      "sleep_socks",
+      "extracoffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "afternoon_gorgo",
+      "kegel",
+      "grind",
+      "evening_protein",
+      "evening_magnesium",
+      "evening_booze",
+      "sleep_socks",
+      "sex",
+      "extracoffee",
+      "evening_magnesium"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "long_walk",
+      "evening_protein",
+      "evening_magnesium",
+      "evening_booze",
+      "masszázs"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium_500",
+      "evening_booze",
+      "extracoffee",
+      "sleep_was_hot"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "afternoon_gorgo",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_prog_relax",
+      "evening_booze",
+      "long_walk",
+      "extracoffee",
+      "cheatday",
+      "meditálás"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_prog_relax",
+      "evening_booze",
+      "sleep_socks",
+      "levendulatea",
+      "extracoffee",
+      "telek_melo"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_booze",
+      "long_walk",
+      "stressful_day"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "perinatus",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_prog_relax",
+      "evening_booze",
+      "grind",
+      "extracoffee",
+      "meditálás"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium_500",
+      "evening_magnesium",
+      "evening_booze",
+      "grind"
+    ],
+    squirrel: true
+  },
+  {
+    events: ["cheatday", "afternoon_gorgo", "sleep_sleepmaster", "drunk"],
+    squirrel: false
+  },
+  {
+    events: ["no_sport", "sleep_deprived", "telek_melo", "kenese"],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "no_coffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium_500",
+      "evening_magnesium",
+      "evening_booze",
+      "grind",
+      "sex",
+      "no_coffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_booze",
+      "meditálás",
+      "stressful_day",
+      "no_coffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_prog_relax",
+      "evening_booze",
+      "grind",
+      "stressful_day",
+      "no_coffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_booze",
+      "no_coffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_booze",
+      "no_coffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "kegel",
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "sleep_sleepmaster",
+      "no_coffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: ["grind", "cheatday", "kegel", "no_sport", "drunk"],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "sleep_sleepmaster",
+      "sleep_deprived"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "kegel",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "sleep_was_cold",
+      "sleep_sleepmaster",
+      "sex"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "kegel",
+      "perinatus",
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_booze",
+      "sleep_was_cold",
+      "sleep_sleepmaster",
+      "grind",
+      "stressful_day"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_prog_relax",
+      "evening_booze",
+      "sleep_was_cold",
+      "sleep_sleepmaster",
+      "grind",
+      "extracoffee",
+      "meditálás",
+      "stressful_day"
+    ],
+    squirrel: false
+  }
+];
+
+// THIS IS SUCCESS FOR CONTINUITY
+JOURNAL = [
+  { events: ["morning_gorgo"], squirrel: true },
+  {
+    events: [
+      "morning_gorgo",
+      "kegel",
+      "evening_protein",
+      "evening_no_drink",
+      "evening_magnesium",
+      "sleep_socks",
+      "evening_prog_relax",
+      "perinatus",
+      "sleep_was_cold",
+      "sleep_downstairs"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "kegel",
+      "perinatus",
+      "evening_protein",
+      "evening_magnesium",
+      "evening_prog_relax",
+      "sleep_socks",
+      "sleep_downstairs",
+      "sleep_pijama"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "kegel",
+      "evening_magnesium",
+      "evening_prog_relax",
+      "evening_booze",
+      "sleep_socks",
+      "sleep_downstairs",
+      "sleep_pijama"
+    ],
+    squirrel: true
+  },
+  { events: ["no_sport", "evening_booze", "travel"], squirrel: true },
+  { events: ["no_sport", "evening_booze", "travel"], squirrel: false },
+  {
+    events: [
+      "no_sport",
+      "evening_booze",
+      "travel",
+      "sleep_deprived",
+      "allergy_season"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "travel",
+      "sleep_sleepmaster",
+      "sleep_deprived",
+      "allergy_season"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_no_drink",
+      "evening_magnesium",
+      "evening_prog_relax",
+      "sleep_sleepmaster",
+      "happy"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "kegel",
+      "evening_magnesium",
+      "evening_prog_relax",
+      "evening_booze",
+      "sleep_sleepmaster",
+      "lucid",
+      "normaflor",
+      "grind"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "long_walk",
+      "evening_magnesium",
+      "sleep_sleepmaster",
+      "normaflor",
+      "grind",
+      "masszázs"
+    ],
+    squirrel: true
+  },
+  { events: ["no_sport", "travel", "drunk"], squirrel: true },
+  {
+    events: ["no_sport", "drunk", "travel", "sleep_sleepmaster"],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_deprived",
+      "normaflor",
+      "grind",
+      "sleep_sleepmaster"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "kegel",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_sleepmaster",
+      "normaflor",
+      "lucid",
+      "sex"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_no_drink",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_sleepmaster",
+      "normaflor",
+      "grind"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "perinatus",
+      "evening_magnesium",
+      "evening_booze",
+      "sleep_sleepmaster",
+      "normaflor",
+      "long_walk"
+    ],
+    squirrel: true
+  },
+
+  {
+    events: ["morning_gorgo", "kegel", "normaflor", "grind", "drunk"],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "sleep_sleepmaster",
+      "sleep_deprived",
+      "normaflor",
+      "sex"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "sleep_sleepmaster",
+      "normaflor",
+      "kegel"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "grind",
+      "kegel",
+      "evening_magnesium",
+      "evening_booze",
+      "sleep_sleepmaster",
+      "normaflor"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "perinatus",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_sleepmaster",
+      "normaflor",
+      "grind",
+      "other",
+      "extracoffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "kegel",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "normaflor",
+      "levendulatea",
+      "other",
+      "extracoffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_sleepmaster",
+      "other",
+      "extracoffee",
+      "sex"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_sleepmaster",
+      "other",
+      "extracoffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_booze",
+      "travel",
+      "grind",
+      "other",
+      "extracoffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_booze",
+      "lucid",
+      "extracoffee",
+      "travel",
+      "extracoffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: ["no_sport", "evening_magnesium", "extracoffee"],
+    squirrel: true
+  },
+  {
+    events: [
+      "afternoon_gorgo",
+      "evening_protein",
+      "evening_magnesium",
+      "sleep_socks",
+      "extracoffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "afternoon_gorgo",
+      "kegel",
+      "grind",
+      "evening_protein",
+      "evening_magnesium",
+      "evening_booze",
+      "sleep_socks",
+      "sex",
+      "extracoffee",
+      "evening_magnesium"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "long_walk",
+      "evening_protein",
+      "evening_magnesium",
+      "evening_booze",
+      "masszázs"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium_500",
+      "evening_booze",
+      "extracoffee",
+      "sleep_was_hot"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "afternoon_gorgo",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_prog_relax",
+      "evening_booze",
+      "long_walk",
+      "extracoffee",
+      "cheatday",
+      "meditálás"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_prog_relax",
+      "evening_booze",
+      "sleep_socks",
+      "levendulatea",
+      "extracoffee",
+      "telek_melo"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_booze",
+      "long_walk",
+      "stressful_day"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "perinatus",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_prog_relax",
+      "evening_booze",
+      "grind",
+      "extracoffee",
+      "meditálás"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium_500",
+      "evening_magnesium",
+      "evening_booze",
+      "grind"
+    ],
+    squirrel: false
+  },
+  {
+    events: ["cheatday", "afternoon_gorgo", "sleep_sleepmaster", "drunk"],
+    squirrel: true
+  },
+  {
+    events: ["no_sport", "sleep_deprived", "telek_melo", "kenese"],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "no_coffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium_500",
+      "evening_magnesium",
+      "evening_booze",
+      "grind",
+      "sex",
+      "no_coffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_booze",
+      "meditálás",
+      "stressful_day",
+      "no_coffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_prog_relax",
+      "evening_booze",
+      "grind",
+      "stressful_day",
+      "no_coffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_booze",
+      "no_coffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_booze",
+      "no_coffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "kegel",
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "sleep_sleepmaster",
+      "no_coffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: ["grind", "cheatday", "kegel", "no_sport", "drunk"],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "sleep_sleepmaster",
+      "sleep_deprived"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "kegel",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "sleep_was_cold",
+      "sleep_sleepmaster",
+      "sex"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "kegel",
+      "perinatus",
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_booze",
+      "sleep_was_cold",
+      "sleep_sleepmaster",
+      "grind",
+      "stressful_day"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_prog_relax",
+      "evening_booze",
+      "sleep_was_cold",
+      "sleep_sleepmaster",
+      "grind",
+      "extracoffee",
+      "meditálás",
+      "stressful_day"
+    ],
+    squirrel: true
+  }
+];
+
+// this is success for bathroom trips
+JOURNAL = [
+  { events: ["morning_gorgo"], squirrel: false },
+  {
+    events: [
+      "morning_gorgo",
+      "kegel",
+      "evening_protein",
+      "evening_no_drink",
+      "evening_magnesium",
+      "sleep_socks",
+      "evening_prog_relax",
+      "perinatus",
+      "sleep_was_cold",
+      "sleep_downstairs"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "kegel",
+      "perinatus",
+      "evening_protein",
+      "evening_magnesium",
+      "evening_prog_relax",
+      "sleep_socks",
+      "sleep_downstairs",
+      "sleep_pijama"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "kegel",
+      "evening_magnesium",
+      "evening_prog_relax",
+      "evening_booze",
+      "sleep_socks",
+      "sleep_downstairs",
+      "sleep_pijama"
+    ],
+    squirrel: false
+  },
+  { events: ["no_sport", "evening_booze", "travel"], squirrel: false },
+  { events: ["no_sport", "evening_booze", "travel"], squirrel: false },
+  {
+    events: [
+      "no_sport",
+      "evening_booze",
+      "travel",
+      "sleep_deprived",
+      "allergy_season"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "travel",
+      "sleep_sleepmaster",
+      "sleep_deprived",
+      "allergy_season"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_no_drink",
+      "evening_magnesium",
+      "evening_prog_relax",
+      "sleep_sleepmaster",
+      "happy"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "kegel",
+      "evening_magnesium",
+      "evening_prog_relax",
+      "evening_booze",
+      "sleep_sleepmaster",
+      "lucid",
+      "normaflor",
+      "grind"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "long_walk",
+      "evening_magnesium",
+      "sleep_sleepmaster",
+      "normaflor",
+      "grind",
+      "masszázs"
+    ],
+    squirrel: false
+  },
+  { events: ["no_sport", "travel", "drunk"], squirrel: true },
+  {
+    events: ["no_sport", "drunk", "travel", "sleep_sleepmaster"],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_deprived",
+      "normaflor",
+      "grind",
+      "sleep_sleepmaster"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "kegel",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_sleepmaster",
+      "normaflor",
+      "lucid",
+      "sex"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_no_drink",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_sleepmaster",
+      "normaflor",
+      "grind"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "perinatus",
+      "evening_magnesium",
+      "evening_booze",
+      "sleep_sleepmaster",
+      "normaflor",
+      "long_walk"
+    ],
+    squirrel: false
+  },
+  { events: [""], squirrel: false },
+  {
+    events: ["morning_gorgo", "kegel", "normaflor", "grind", "drunk"],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "sleep_sleepmaster",
+      "sleep_deprived",
+      "normaflor",
+      "sex"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "sleep_sleepmaster",
+      "normaflor",
+      "kegel"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "grind",
+      "kegel",
+      "evening_magnesium",
+      "evening_booze",
+      "sleep_sleepmaster",
+      "normaflor"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "perinatus",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_sleepmaster",
+      "normaflor",
+      "grind",
+      "other",
+      "extracoffee"
+    ],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "kegel",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "normaflor",
+      "levendulatea",
+      "other",
+      "extracoffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_sleepmaster",
+      "other",
+      "extracoffee",
+      "sex"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium",
+      "sleep_downstairs",
+      "sleep_sleepmaster",
+      "other",
+      "extracoffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_booze",
+      "travel",
+      "grind",
+      "other",
+      "extracoffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_booze",
+      "lucid",
+      "extracoffee",
+      "travel",
+      "extracoffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: ["no_sport", "evening_magnesium", "extracoffee"],
+    squirrel: false
+  },
+  {
+    events: [
+      "afternoon_gorgo",
+      "evening_protein",
+      "evening_magnesium",
+      "sleep_socks",
+      "extracoffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "afternoon_gorgo",
+      "kegel",
+      "grind",
+      "evening_protein",
+      "evening_magnesium",
+      "evening_booze",
+      "sleep_socks",
+      "sex",
+      "extracoffee",
+      "evening_magnesium"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "long_walk",
+      "evening_protein",
+      "evening_magnesium",
+      "evening_booze",
+      "masszázs"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium_500",
+      "evening_booze",
+      "extracoffee",
+      "sleep_was_hot"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "afternoon_gorgo",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_prog_relax",
+      "evening_booze",
+      "long_walk",
+      "extracoffee",
+      "cheatday",
+      "meditálás"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_prog_relax",
+      "evening_booze",
+      "sleep_socks",
+      "levendulatea",
+      "extracoffee",
+      "telek_melo"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_booze",
+      "long_walk",
+      "stressful_day"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "perinatus",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_prog_relax",
+      "evening_booze",
+      "grind",
+      "extracoffee",
+      "meditálás"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium_500",
+      "evening_magnesium",
+      "evening_booze",
+      "grind"
+    ],
+    squirrel: false
+  },
+  {
+    events: ["cheatday", "afternoon_gorgo", "sleep_sleepmaster", "drunk"],
+    squirrel: true
+  },
+  {
+    events: ["no_sport", "sleep_deprived", "telek_melo", "kenese"],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "no_coffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium_500",
+      "evening_magnesium",
+      "evening_booze",
+      "grind",
+      "sex",
+      "no_coffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_booze",
+      "meditálás",
+      "stressful_day",
+      "no_coffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_prog_relax",
+      "evening_booze",
+      "grind",
+      "stressful_day",
+      "no_coffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_booze",
+      "no_coffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_booze",
+      "no_coffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "kegel",
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "sleep_sleepmaster",
+      "no_coffee"
+    ],
+    squirrel: false
+  },
+  {
+    events: ["grind", "cheatday", "kegel", "no_sport", "drunk"],
+    squirrel: true
+  },
+  {
+    events: [
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "sleep_sleepmaster",
+      "sleep_deprived"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "kegel",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "sleep_was_cold",
+      "sleep_sleepmaster",
+      "sex"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "kegel",
+      "perinatus",
+      "no_sport",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_booze",
+      "sleep_was_cold",
+      "sleep_sleepmaster",
+      "grind",
+      "stressful_day"
+    ],
+    squirrel: false
+  },
+  {
+    events: [
+      "morning_gorgo",
+      "evening_magnesium",
+      "evening_magnesium_500",
+      "evening_prog_relax",
+      "evening_booze",
+      "sleep_was_cold",
+      "sleep_sleepmaster",
+      "grind",
+      "extracoffee",
+      "meditálás",
+      "stressful_day"
+    ],
+    squirrel: false
+  },
+  { events: [""], squirrel: [""] }
+];
+
+// adding entry to journal
+function addEntry(events, squirrel) {
+  journal.push({ events, squirrel });
+}
+
+/*
+addEntry(["work", "touched tree", "pizza", "running",
+          "television"], false);
+addEntry(["work", "ice cream", "cauliflower", "lasagna",
+          "touched tree", "brushed teeth"], false);
+addEntry(["weekend", "cycling", "break", "peanuts",
+          "beer"], true);
+*/
+
 function tableFor(event, journal) {
   let table = [0, 0, 0, 0];
   for (let i = 0; i < journal.length; i++) {
@@ -268,15 +1863,13 @@ function journalEvents(journal) {
   return events;
 }
 
+console.log("---------------");
+
 console.log(journalEvents(JOURNAL));
-
-// for (let event of journalEvents(JOURNAL)) {
-//   console.log(event + ":", phi(tableFor(event, JOURNAL)));
-// }
-
-function addEntry(events, squirrel) {
-  journal.push({ events, squirrel });
+for (let event of journalEvents(JOURNAL)) {
+  console.log(event + ":", phi(tableFor(event, JOURNAL)));
 }
+
 function phi(table) {
   return (
     (table[3] * table[0] - table[2] * table[1]) /
@@ -312,6 +1905,8 @@ for (let entry of JOURNAL) {
 }
 
 console.log(phi(tableFor("peanut teeth", JOURNAL)));
+// //1
+// That’s a strong result. The phenomenon occurs precisely when Jacques eats peanuts and fails to brush his teeth. If only he weren’t such a slob about dental hygiene, he’d have never even noticed his affliction.
 
 // addEntry(["work", "touched tree", "pizza", "running", "television"], false);
 // addEntry(
