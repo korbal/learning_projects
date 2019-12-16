@@ -49,7 +49,41 @@
       <button v-on:click="changeWage(-1)">Remove $1 from wage</button>
       <br />
       <button @click="logEvent">Log Event Info</button>
+      <br /><input type="text" @keyup="updateName" />
 
+      <!--same data binding natively with v-model. no need for updateName function-->
+
+      <input type="text" v-model="name" />
+      <br /><br />
+      <button @click.shift="logMessage">
+        shift-click me, otherwise I won't work
+      </button>
+      <!--event modifier: prevent default action (ie link navigation)-->
+
+      <a href="https://google.com" @click.prevent="logMessage">Google</a>
+
+      <br />
+      <p v-if="showName">Fasz Mario</p>
+
+      <!--v-if-else only show if Mario (if) is true-->
+      <p v-else-if="showAge">27</p>
+      <button @click="toggleMario">
+        Toggle Fasz Mario. Currently: {{ showName }}
+      </button>
+      <button @click="toggleAge">
+        Toggle Fasz Mario. Currently: {{ showAge }}
+      </button>
+      <br />
+      <ul>
+        <li v-for="item in items">{{ item }}</li>
+      </ul>
+
+      <div v-for="(ninja, index) in ninjas">
+        {{ index + 1 }}.) {{ ninja.name }} is {{ ninja.age }} and has
+        {{ ninja.belt }} belt.
+      </div>
+
+      <br /><br />
       <!--if logCoords has () after it, it does not work. can only use () if there is a parameter? -->
       <div class="canvas" @mousemove="logCoords">
         {{ coords.x }},{{ coords.y }}
