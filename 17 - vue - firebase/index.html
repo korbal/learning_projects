@@ -6,6 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Vue Basics</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+      .one {
+        color: green;
+      }
+      .two {
+        text-decoration: line-through;
+      }
+      .canvas {
+        width: 300px;
+        height: 300px;
+        margin-top: 20px;
+        background: #ddd;
+      }
+    </style>
   </head>
   <body>
     <h1>
@@ -15,7 +30,34 @@
     <div id="app">
       <h2>{{ title }}</h2>
       <p>{{ greet("morning") }}</p>
+      <!--can't use {{url}} template in attributes. need to use data binding-->
+      <a v-bind:href="url">Youtube</a>
+
+      <div v-bind:class="classes">Classes from Instance</div>
+
+      <input type="text" v-bind:value="name" />
+
+      <div>I earn {{ wage }} dollars per hour.</div>
+
+      <button v-on:click="wage++">Add $1 to wage</button>
+      <button v-on:click="wage--">Remove $1 from wage</button>
+
+      <!--same with methods from Vue instance-->
+      <button v-on:click="changeWage(1)" v-on:dblclick="changeWage(3)">
+        Add $1 to wage
+      </button>
+      <button v-on:click="changeWage(-1)">Remove $1 from wage</button>
+      <br />
+      <button @click="logEvent">Log Event Info</button>
+
+      <!--if logCoords has () after it, it does not work. can only use () if there is a parameter? -->
+      <div class="canvas" @mousemove="logCoords">
+        {{ coords.x }},{{ coords.y }}
+      </div>
     </div>
+    <!--End of APP container-->
+
+    <div><br /><br /></div>
 
     <script src="app.js"></script>
   </body>
