@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     deleteSmoothie(id) {
-      //delete from firestore
+      //delete from firestore, then remove from UI as well.
       db.collection("smoothies")
         .doc(id)
         .delete()
