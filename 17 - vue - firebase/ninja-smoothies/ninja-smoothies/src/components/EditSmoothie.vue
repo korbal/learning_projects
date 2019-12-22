@@ -40,6 +40,8 @@
 
 <script>
 import db from "@/firebase/init.js";
+import slugify from "slugify";
+
 export default {
   name: "EditSmoothie",
   data() {
@@ -53,7 +55,33 @@ export default {
   },
   methods: {
     editSmoothie() {
-      console.log(this.smoothie.title, this.smoothie.ingredients);
+      //console.log(this.smoothie.title, this.smoothie.ingredients);
+      if (this.smoothie.title) {
+        this.feedback = null;
+        //create a slug for the item
+        this.smoothie.slug = slugify(this.smoothie.title, {
+          replacement: "-",
+          remove: /[$*_+~.()'"!\-:@]/g,
+          lower: true
+        });
+
+        db.collection("smoothies")
+          .doc(this.smoothie.id)
+          .update({
+            title: this.smoothie.title,
+            ingredients: this.smoothie.ingredients,
+            slug: this.smoothie.slug
+          })
+          .then(() => {
+            //this is a promise. so while saving into the db, we'll redirect the user to the home page
+            this.$router.push({ name: "Index" });
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      } else {
+        this.feedback = "You must enter a smoothie title";
+      }
     },
 
     addIng() {
