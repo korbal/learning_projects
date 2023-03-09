@@ -1,7 +1,7 @@
 import supabase from "@/utils/supabase";
 import { notFound } from "next/navigation";
 
-// if a new row is added to db, the url will be available but it won't show up in the list of posts. we need to redeploy the app to get the new post to show up in the list of posts. so generatestaticparams is a way to show what pages we want to generate ahead of time, but if the user wants to go to a url that was not pre-generated, next.js will still try to go there (and if it finds it in the db, it will server render it) https://www.youtube.com/watch?v=GniRj1jIhFw&t=2s  .
+// if a new row is added to db, the url will be available but it won't show up in the list of posts. we need to redeploy the app to get the new post to show up in the list of posts. so generatestaticparams is a way to show what pages we want to generate ahead of time, but if the user wants to go to a url that was not pre-generated, next.js will still try to go there (and if it finds it in the db, it will server render it) https://www.youtube.com/watch?v=GniRj1jIhFw&t=2s
 export async function generateStaticParams() {
   const { data: posts } = await supabase.from("posts").select("id");
   console.log(posts);
